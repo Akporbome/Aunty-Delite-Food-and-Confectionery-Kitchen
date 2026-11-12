@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f2e9">
+  <meta name="description" content="Staff sign-in for The Common Table.">
+  <title>Staff — The Common Table</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="staff">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="The Common Table home"><span class="brand-mark" aria-hidden="true">ct</span><span>the common table<small>GOOD FOOD, GOOD COMPANY</small></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <a href="index.html" data-nav="home">Home</a><a href="menu.html" data-nav="menu">Menu</a><a href="order.html" data-nav="order">Order <span class="nav-count" data-cart-count>0</span></a><a href="reservations.html" data-nav="reservations">Reservations</a><a href="staff.html" data-nav="staff">Staff sign in</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-intro section-wrap">
+      <p class="eyebrow">For the people behind the table</p>
+      <h1>Staff <em>room.</em></h1>
+      <p>Sign in to update the menu and manage orders and reservations.</p>
+    </section>
+    <section class="staff-section section-wrap">
+      <form class="staff-login-form" id="staff-login-form">
+        <div class="form-heading"><span>01</span><h2>Staff sign in</h2></div>
+        <label>Staff password<input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="button button-dark button-wide" type="submit">Sign in <span aria-hidden="true">→</span></button>
+        <p class="form-message" id="staff-message" role="status"></p>
+      </form>
+
+      <div class="staff-dashboard" id="staff-dashboard" hidden>
+        <div class="admin-heading">
+          <div><p class="eyebrow">Welcome back</p><h2>Staff dashboard</h2></div>
+          <button class="button button-outline" id="staff-logout" type="button">Sign out</button>
+        </div>
+        <div class="admin-tabs" role="tablist" aria-label="Staff management">
+          <button type="button" class="admin-tab active" data-admin-tab="menu" role="tab" aria-selected="true">Menu</button>
+          <button type="button" class="admin-tab" data-admin-tab="orders" role="tab" aria-selected="false">Orders</button>
+          <button type="button" class="admin-tab" data-admin-tab="reservations" role="tab" aria-selected="false">Reservations</button>
+        </div>
+        <section class="admin-view" id="admin-menu-view" role="tabpanel">
+          <div class="admin-view-heading"><h3>Menu items</h3><button class="button button-outline" id="menu-add" type="button">+ Add item</button></div>
+          <form id="menu-item-form" class="menu-edit-form" hidden>
+            <input name="id" type="hidden">
+            <label>Dish name<input name="name" maxlength="100" required></label>
+            <label>Description<input name="description" maxlength="300"></label>
+            <div class="form-row">
+              <label>Category<input name="category" maxlength="60" required placeholder="e.g. Mains"></label>
+              <label>Price (in cents)<input name="price_cents" type="number" min="0" max="100000" step="1" required></label>
+            </div>
+            <div class="inline-actions"><button class="button button-dark" type="submit">Save item</button><button class="button button-outline" id="menu-cancel" type="button">Cancel</button></div>
+            <p class="form-message" id="menu-message" role="status"></p>
+          </form>
+          <div class="admin-list" id="admin-menu-list"></div>
+        </section>
+        <section class="admin-view" id="admin-orders-view" role="tabpanel" hidden>
+          <div class="admin-view-heading"><h3>Recent orders</h3><button class="button button-outline" data-refresh="orders" type="button">Refresh</button></div>
+          <div class="admin-list" id="admin-orders-list"></div>
+        </section>
+        <section class="admin-view" id="admin-reservations-view" role="tabpanel" hidden>
+          <div class="admin-view-heading"><h3>Reservations</h3><button class="button button-outline" data-refresh="reservations" type="button">Refresh</button></div>
+          <div class="admin-list" id="admin-reservations-list"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <a class="brand brand-footer" href="index.html"><span class="brand-mark" aria-hidden="true">ct</span><span>the common table<small>GOOD FOOD, GOOD COMPANY</small></span></a>
+    <p>Made for sharing. © <span data-year></span> The Common Table</p>
+    <a class="footer-staff-link" href="menu.html">Public menu</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f2e9">
+  <meta name="description" content="Request a table at The Common Table.">
+  <title>Reservations — The Common Table</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="reservations">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="The Common Table home"><span class="brand-mark" aria-hidden="true">ct</span><span>the common table<small>GOOD FOOD, GOOD COMPANY</small></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <a href="index.html" data-nav="home">Home</a><a href="menu.html" data-nav="menu">Menu</a><a href="order.html" data-nav="order">Order <span class="nav-count" data-cart-count>0</span></a><a href="reservations.html" data-nav="reservations">Reservations</a><a href="staff.html" data-nav="staff">Staff sign in</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-intro section-wrap">
+      <p class="eyebrow">Make an occasion of it</p>
+      <h1>Your seat is <em>waiting.</em></h1>
+      <p>Catch up, celebrate, or just come hungry. Send a request and we'll be in touch to confirm your table.</p>
+    </section>
+    <section class="reservation-section section-wrap">
+      <div class="reservation-copy">
+        <p class="eyebrow">A table for good company</p>
+        <h2>Stay a<br><em>little.</em></h2>
+        <p>Tell us when you'd like to join us. For parties larger than 8, please give us a call.</p>
+        <div class="reservation-detail"><span class="detail-icon">✳</span><span>We'll call or email to confirm your reservation.</span></div>
+      </div>
+      <form class="reservation-form" id="reservation-form">
+        <div class="form-heading"><span>01</span><h2>Request a table</h2></div>
+        <div class="form-row">
+          <label>Your name<input name="name" autocomplete="name" maxlength="100" required placeholder="e.g. Alex Morgan"></label>
+          <label>Party size<select name="party_size" required>
+            <option value="2">2 people</option><option value="1">1 person</option><option value="3">3 people</option><option value="4">4 people</option><option value="5">5 people</option><option value="6">6 people</option><option value="7">7 people</option><option value="8">8 people</option>
+          </select></label>
+        </div>
+        <div class="form-row">
+          <label>Date<input name="date" id="reservation-date" type="date" required></label>
+          <label>Time<select name="time" required>
+            <option value="11:00">11:00</option><option value="12:00">12:00</option><option value="13:00">13:00</option><option value="14:00">14:00</option><option value="17:00">17:00</option><option value="18:00">18:00</option><option value="19:00">19:00</option><option value="20:00">20:00</option><option value="21:00">21:00</option>
+          </select></label>
+        </div>
+        <div class="form-row">
+          <label>Phone<input name="phone" type="tel" autocomplete="tel" maxlength="40" required placeholder="+1 (555) 000-0000"></label>
+          <label>Email <span class="optional">(optional)</span><input name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com"></label>
+        </div>
+        <label>A note for us <span class="optional">(optional)</span><textarea name="note" maxlength="500" rows="3" placeholder="A birthday? Dietary needs? Let us know."></textarea></label>
+        <button class="button button-dark button-wide" type="submit">Request a table <span aria-hidden="true">→</span></button>
+        <p class="form-message" id="reservation-message" role="status"></p>
+      </form>
+    </section>
+    <section class="visit-strip">
+      <div><p class="eyebrow">Come as you are</p><h2>We'll keep<br>the light on.</h2></div>
+      <div class="visit-detail"><span class="detail-icon">⌖</span><p><b>Find us</b><br>Somewhere on your favorite street<br>Your town, Your Country</p></div>
+      <div class="visit-detail"><span class="detail-icon">◷</span><p><b>Come by</b><br>Monday – Sunday<br>11:00 am – 10:00 pm</p></div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <a class="brand brand-footer" href="index.html"><span class="brand-mark" aria-hidden="true">ct</span><span>the common table<small>GOOD FOOD, GOOD COMPANY</small></span></a>
+    <p>Made for sharing. © <span data-year></span> The Common Table</p>
+    <a class="footer-staff-link" href="staff.html">Staff sign in</a>
+  </footer>
+</body>
+</html>
