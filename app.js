@@ -1,4 +1,5 @@
 const page = document.body.dataset.page;
+const previewMode = window.location.protocol === "file:" || window.location.hostname.endsWith(".github.io");
 const previewMenu = [
   { id: 1, name: "Roasted tomato toast", description: "Sourdough, whipped ricotta, basil oil", category: "Brunch", price_cents: 1250 },
   { id: 2, name: "Wild mushroom omelette", description: "Herbs, aged cheddar, dressed greens", category: "Brunch", price_cents: 1650 },
@@ -23,7 +24,7 @@ function escapeHtml(value) {
 }
 
 async function request(url, options = {}) {
-  if (window.location.protocol === "file:") {
+  if (previewMode) {
     if (url === "/api/menu") return previewMenu;
     if (url === "/api/admin/session") return { authenticated: false };
     throw new Error("Preview only: start the local server to place orders, request reservations, or use staff tools.");
@@ -127,10 +128,12 @@ function setupSharedNavigation() {
   document.querySelectorAll("[data-year]").forEach(element => {
     element.textContent = new Date().getFullYear();
   });
-  if (window.location.protocol === "file:") {
+  if (previewMode) {
     const notice = document.createElement("p");
     notice.className = "preview-notice";
-    notice.textContent = "Preview mode: menu and basket are available. Start the local server to send orders, reservations, or staff updates.";
+    notice.textContent = window.location.protocol === "file:"
+      ? "Preview mode: menu and basket are available. Start the local server to send orders, reservations, or staff updates."
+      : "Client preview: browse the menu and basket here. Orders, reservations, and staff tools require the Python backend.";
     document.querySelector(".site-header").after(notice);
   }
   updateCartBadges();
